@@ -1,0 +1,315 @@
+body {
+    background:#222;font-family:Nunito;
+    font-weight:100;overflow:hidden;
+}
+#logo {
+    position:absolute;top:50%;left:50%;
+    margin-left:-150px;margin-top:-140px;
+    width:300px;height:280px;text-align:center;
+}
+#logo img {width:128px}
+#footer {
+    position:absolute;bottom:30px;text-align:center;
+    color:#666;width:100%;
+    letter-spacing:1px;font-size:14px;line-height:24px;
+}
+
+/*
+ * LOADING
+ */
+.cssload-square {
+    margin: 68px auto;
+    width: 19px;
+    height: 19px;
+    transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.cssload-square-part {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    z-index: 1;
+    animation: cssload-part-anim 0.48s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+    -o-animation: cssload-part-anim 0.48s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+    -ms-animation: cssload-part-anim 0.48s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+    -webkit-animation: cssload-part-anim 0.48s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+    -moz-animation: cssload-part-anim 0.48s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.cssload-square-green {
+    background: rgb(0,115,255);
+    right: 0;
+    bottom: 0;
+    animation-direction: alternate-reverse;
+    -o-animation-direction: alternate-reverse;
+    -ms-animation-direction: alternate-reverse;
+    -webkit-animation-direction: alternate-reverse;
+    -moz-animation-direction: alternate-reverse;
+}
+
+.cssload-square-pink {
+    background: rgb(255,0,102);
+    left: 0;
+    top: 0;
+}
+
+.cssload-square-blend {
+    background: rgb(255,255,255);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    animation: blend-anim 0.48s ease-in infinite;
+    -o-animation: blend-anim 0.48s ease-in infinite;
+    -ms-animation: blend-anim 0.48s ease-in infinite;
+    -webkit-animation: blend-anim 0.48s ease-in infinite;
+    -moz-animation: blend-anim 0.48s ease-in infinite;
+}
+
+@keyframes blend-anim {
+    0% {
+        transform: scale(0.01, 0.01) rotateY(0);
+        animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    50% {
+        transform: scale(1, 1) rotateY(0);
+        animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    100% {
+        transform: scale(0.01, 0.01) rotateY(0);
+    }
+}
+
+@-o-keyframes blend-anim {
+    0% {
+        -o-transform: scale(0.01, 0.01) rotateY(0);
+        -o-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    50% {
+        -o-transform: scale(1, 1) rotateY(0);
+        -o-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    100% {
+        -o-transform: scale(0.01, 0.01) rotateY(0);
+    }
+}
+
+@-ms-keyframes blend-anim {
+    0% {
+        -ms-transform: scale(0.01, 0.01) rotateY(0);
+        -ms-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    50% {
+        -ms-transform: scale(1, 1) rotateY(0);
+        -ms-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    100% {
+        -ms-transform: scale(0.01, 0.01) rotateY(0);
+    }
+}
+
+@-webkit-keyframes blend-anim {
+    0% {
+        -webkit-transform: scale(0.01, 0.01) rotateY(0);
+        -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    50% {
+        -webkit-transform: scale(1, 1) rotateY(0);
+        -webkit-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    100% {
+        -webkit-transform: scale(0.01, 0.01) rotateY(0);
+    }
+}
+
+@-moz-keyframes blend-anim {
+    0% {
+        -moz-transform: scale(0.01, 0.01) rotateY(0);
+        -moz-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    50% {
+        -moz-transform: scale(1, 1) rotateY(0);
+        -moz-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    100% {
+        -moz-transform: scale(0.01, 0.01) rotateY(0);
+    }
+}
+
+@keyframes cssload-part-anim {
+    0% {
+        transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        transform: translate3d(10px, 10px, 0);
+    }
+}
+
+@-o-keyframes cssload-part-anim {
+    0% {
+        -o-transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        -o-transform: translate3d(10px, 10px, 0);
+    }
+}
+
+@-ms-keyframes cssload-part-anim {
+    0% {
+        -ms-transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        -ms-transform: translate3d(10px, 10px, 0);
+    }
+}
+
+@-webkit-keyframes cssload-part-anim {
+    0% {
+        -webkit-transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(10px, 10px, 0);
+    }
+}
+
+@-moz-keyframes cssload-part-anim {
+    0% {
+        -moz-transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        -moz-transform: translate3d(10px, 10px, 0);
+    }
+}
+/*
+ * LOADING
+ */
+.cssload-bell {
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    position: absolute;
+    left: calc(50% - 70px);
+    top:-7px;
+}
+
+.cssload-circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.cssload-circle .cssload-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 5px solid #333;
+    border-right: none;
+    border-top: none;
+    background-clip: padding;
+    box-shadow: inset 0px 0px 10px #bbb;
+}
+
+.cssload-circle:nth-of-type(0) {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+.cssload-circle:nth-of-type(0) .cssload-inner {
+    animation: cssload-spin 2.3s infinite linear;
+    -o-animation: cssload-spin 2.3s infinite linear;
+    -ms-animation: cssload-spin 2.3s infinite linear;
+    -webkit-animation: cssload-spin 2.3s infinite linear;
+    -moz-animation: cssload-spin 2.3s infinite linear;
+}
+
+.cssload-circle:nth-of-type(1) {
+    transform: rotate(70deg);
+    -o-transform: rotate(70deg);
+    -ms-transform: rotate(70deg);
+    -webkit-transform: rotate(70deg);
+    -moz-transform: rotate(70deg);
+}
+.cssload-circle:nth-of-type(1) .cssload-inner {
+    animation: cssload-spin 2.3s infinite linear;
+    -o-animation: cssload-spin 2.3s infinite linear;
+    -ms-animation: cssload-spin 2.3s infinite linear;
+    -webkit-animation: cssload-spin 2.3s infinite linear;
+    -moz-animation: cssload-spin 2.3s infinite linear;
+}
+
+.cssload-circle:nth-of-type(2) {
+    transform: rotate(140deg);
+    -o-transform: rotate(140deg);
+    -ms-transform: rotate(140deg);
+    -webkit-transform: rotate(140deg);
+    -moz-transform: rotate(140deg);
+}
+.cssload-circle:nth-of-type(2) .cssload-inner {
+    animation: cssload-spin 2.3s infinite linear;
+    -o-animation: cssload-spin 2.3s infinite linear;
+    -ms-animation: cssload-spin 2.3s infinite linear;
+    -webkit-animation: cssload-spin 2.3s infinite linear;
+    -moz-animation: cssload-spin 2.3s infinite linear;
+}
+
+.cssload-bell {
+    animation: cssload-spin 5.75s infinite linear;
+    -o-animation: cssload-spin 5.75s infinite linear;
+    -ms-animation: cssload-spin 5.75s infinite linear;
+    -webkit-animation: cssload-spin 5.75s infinite linear;
+    -moz-animation: cssload-spin 5.75s infinite linear;
+}
+
+
+
+@keyframes cssload-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-spin {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-spin {
+    from {
+        -ms-transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-spin {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
