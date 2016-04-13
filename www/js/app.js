@@ -13,7 +13,8 @@ function start() {
     var version = '1.0.0';
 
     // App config
-    localStorage.server = "http://10.0.0.8/quickie/server/";
+    //localStorage.server = "http://10.0.0.8/quickie/server/";
+    localStorage.server = "http://192.168.0.100/quickie/server/";
     localStorage.userid = 2;
     localStorage.username = "jwillbala@hotmail.com";
     localStorage.userpass = "bala123";
