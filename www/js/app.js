@@ -97,6 +97,20 @@ var app = {
              }
              navigator.geolocation.getCurrentPosition(onSuccess, onError);
              */
+
+            function onSuccess(position) {
+                $('#coord').html(position.coords.latitude + " x " + position.coords.longitude);
+            }
+            function onError(error) {
+                alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+            }
+            var watchID = navigator.geolocation.watchPosition(onSuccess, onError, {timeout: 30000});
+
+
+            //====================
+            // Redirect
+            //====================
             var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
             if (fn === "index.html") {
                 $('#logo').delay(2000).fadeOut("fast", function () {
