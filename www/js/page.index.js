@@ -3,10 +3,13 @@ function getPeople() {
     //
     debug();
     //
+    if (halt(true))
+        return;
+    var fN = fName();
+    //
     if ($('.showProfile').length === 0) { // primeira vez
         $('#loadingPeople').show();
     }
-    
     $.ajax({
         url: localStorage.server + "/getpeople.json.php",
         data: {
@@ -16,9 +19,10 @@ function getPeople() {
         type: 'GET',
         dataType: 'jsonp',
         jsonp: 'callback',
-        timeout: 5000
+        timeout: 10000
     })
             .always(function () {
+                s.removeItem(fN); // halt
                 $('#loadingPeople').hide();
             })
 
@@ -27,19 +31,23 @@ function getPeople() {
             })
 
             .done(function (res) {
+
                 if (res !== null) {
+
                     if (res.error) {
                         myApp.alert('Desculpe, ocorreu um erro interno.' + res.error, 'Erro');
                         return;
                     }
-                    console.log(res);
 
-                    //$('#getPeople').html("");
+                    if (typeof res.length !== "undefined") {
+                        console.log(res.length + " results");
+                    }
+
                     // construct
                     var x = 0;
                     var html = '<div class="row">';
                     $.each(res, function (i, item) {
-                        console.log(res[i].nome);
+                        //console.log(res[i].nome);
                         x++;
                         if (x === 3) {
                             html += '</div><div class="row">'; // row
@@ -51,7 +59,7 @@ function getPeople() {
                         html += '<div class="online-img round" style="background-image:url(https://graph.facebook.com/' + res[i].fb_id + '/picture?type=large);">';
                         html += '</div>';
                         html += '</div>';
-                        html += '' + res[i].nome + ', ' + idade + '';
+                        html += '<div>' + res[i].nome + ', ' + idade + '</div>';
                         html += '</a></div>';
                         if (res.length === parseInt(i + 1)) {
                             //console.log("aaa");

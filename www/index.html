@@ -6,14 +6,16 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui" />
         <link href='https://fonts.googleapis.com/css?family=Nunito:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/index.css">
         <title>Hello World</title>
     </head>
     <body>
         <div id="content">
+
             <div id="logo">
+
                 <img src="img/nickfordmini.png" />
 
                 <div class="cssload-bell">
@@ -34,34 +36,31 @@
                     </div>
                 </div>
 
-                <div class="cssload-square">
-                    <div class="cssload-square-part cssload-square-green"></div>
-                    <div class="cssload-square-part cssload-square-pink"></div>
-                    <div class="cssload-square-blend"></div>
+
+                <div id="footer">
+                    Nickford Design & Software<br/>
+                    Copyright© 2016<br/>
+                    www.nickford.com.br<br/>
                 </div>
 
             </div>
 
 
-            <div id="footer">
-                Nickford Design & Software<br/>
-                Copyright© 2016<br/>
-                www.nickford.com.br<br/>
-            </div>
         </div>
 
         <script src="cordova.js"></script>
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/app.js"></script>
-        
         <!-- RUN -->
         <script type="text/javascript">
+            
+            sessionStorage.deviceReady = 1;
+            start();
+            
             app.initialize();
-            //sessionStorage.deviceReady = 1;
-            if (sessionStorage.deviceReady == 1) {
-                //window.location.href = "login.html";
-            }
-
+            $(window).on("load", function () {
+                $("#logo").fadeIn("slow");
+            });
         </script>
 
     </body>

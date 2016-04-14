@@ -2,8 +2,7 @@
 
 $(document).ready(function () {
 
-    $.validate({
-    });
+    //$.validate();
 
     function getheight() {
         var d = document.documentElement;
@@ -199,56 +198,3 @@ $(window).on("load", function () {
         return array;
     }
 });
-// ================================
-// CENTER ABSOLUTE ELEMENT
-// ================================
-function center($elem) {
-    var ew = $elem.width();
-    var eh = $elem.height();
-    var w = $(window).width();
-    var h = $(window).height();
-    console.log("ew=" + ew + " eh=" + eh + " w=" + w + " h=" + h);
-    $elem.css("position", "absolute")
-            .css("left", parseInt(w / 2) + "px")
-            .css("margin-left", "-" + parseInt(ew / 2) + "px")
-            .css("top", parseInt(h / 2) + "px")
-            .css("margin-top", "-" + parseInt(eh / 2) + "px");
-}
-
-// ================================
-// LOADING
-// ================================
-function loading(dataId, opacity, fadeIn) {
-
-    if (typeof fadeIn === "undefined")
-        fadeIn = true;
-    if (typeof opacity === "undefined")
-        opacity = 0.9;
-
-    var $elem = $("#loading-img [data-id='" + dataId + "']");
-
-    $("#loading-img div").hide();
-    $('#loading-bkg').css("opacity", opacity);
-
-    if (fadeIn) {
-        $('#loading-bkg').fadeIn("fast", function () {
-            $('#loading-img').show();
-            center($elem);
-            $elem.fadeIn("slow");
-        });
-    }
-    else {
-        $('#loading-bkg').show();
-        $('#loading-img').show();
-        center($elem);
-        $elem.show();
-        console.log($elem);
-    }
-}
-function loadingHide() {
-    setTimeout(function () {
-        $('#loading-img').fadeOut("fast");
-        $('#loading-bkg').fadeOut("fast");
-    }, 500);
-
-}

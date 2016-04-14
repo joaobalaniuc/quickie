@@ -17,9 +17,9 @@ var myApp = new Framework7({
     pushStateNoAnimation: false,
     pushStateSeparator: '#!/',
     template7Pages: true
-    /*onPageInit: function (app, page) {
-     console.log("init:" + page.name);
-     }*/
+            /*onPageInit: function (app, page) {
+             console.log("init:" + page.name);
+             }*/
 });
 // Expose Internal DOM library
 var $$ = Dom7;
@@ -221,7 +221,8 @@ myApp.onPageInit('messages', function (page) {
         //html += '<div style="background-image:url(' + url + ')" class="message-avatar"></div>';
         html += '</div>';
         $('#getChat').append(html);
-
+        $("html, body, .page-content, .messages").animate({scrollTop: $(document).height()}, 1000);
+        console.log("sending " + messageText);
         $.ajax({
             url: localStorage.server + "/chat-send.json.php",
             data: {
@@ -230,7 +231,7 @@ myApp.onPageInit('messages', function (page) {
                 'msg': messageText,
                 'id_user_dst': sessionStorage.id_user_dst
             },
-            type: 'POST',
+            type: 'GET',
             dataType: 'jsonp',
             jsonp: 'callback',
             timeout: 5000
@@ -240,16 +241,16 @@ myApp.onPageInit('messages', function (page) {
                 })
 
                 .fail(function () {
-                    //myApp.alert('Desculpe, verifique sua conexão e tente novamente.', 'Erro');
+                    myApp.alert('Desculpe, verifique sua conexão e tente novamente.', 'Erro');
                 })
 
                 .done(function (res) {
                     if (res !== null) {
                         if (res.error) {
-                            //myApp.alert('Desculpe, ocorreu um erro interno.', 'Erro');
+                            myApp.alert('Desculpe, ocorreu um erro interno.', 'Erro');
                             return;
                         }
-                        console.log(res);
+                        sessionStorage.lastchat_inner = res.success;
 
                     } // res not null
                 }); // after ajax

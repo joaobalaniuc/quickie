@@ -2,9 +2,14 @@ function getChatList() {
     //
     debug();
     //
+    if (halt(true))
+        return;
+    var fN = fName();
+    //
     if ($('.showChat').length === 0) {
         myApp.showIndicator();
     }
+    
     $.ajax({
         url: localStorage.server + "/chat-list.json.php",
         data: {
@@ -16,9 +21,10 @@ function getChatList() {
         type: 'GET',
         dataType: 'jsonp',
         jsonp: 'callback',
-        timeout: 5000
+        timeout: 10000
     })
             .always(function () {
+                s.removeItem(fN); // halt
                 myApp.hideIndicator();
             })
 
@@ -32,9 +38,11 @@ function getChatList() {
                         myApp.alert('Desculpe, ocorreu um erro interno.' + res.error, 'Erro');
                         return;
                     }
-                    console.log(res);
 
-                    $('#getChatList').html("");
+                    if (typeof res.length !== "undefined") {
+                        console.log(res.length + " results");
+                    }
+
                     // construct
                     var x = 0;
                     var html = '';
@@ -77,7 +85,7 @@ function getChatList() {
                         html += '</li>'; // row
                         sessionStorage.lastchat = res[i].id; // last chat id
                     });
-                    $('#getChatList').prepend(html);
+                    $('#getChatList').html(html);
 
 
                 } // res not null
@@ -87,29 +95,29 @@ function getChat() {
     //
     debug();
     //
+    if (halt(true))
+        return;
+    var fN = fName();
+    //
     if ($('.message').length === 0) {
         myApp.showIndicator();
     }
-    var data = {
-        'username': localStorage.username,
-        'userpass': localStorage.userpass,
-        'startdate': sessionStorage.session_startdate,
-        'id_pair': sessionStorage.id_pair,
-        'lastchat': sessionStorage.lastchat_inner
-    };
     $.ajax({
         url: localStorage.server + "/chat-read.json.php",
-        data: data,
+        data: {
+            'username': localStorage.username,
+            'userpass': localStorage.userpass,
+            'startdate': sessionStorage.session_startdate,
+            'id_pair': sessionStorage.id_pair,
+            'lastchat': sessionStorage.lastchat_inner
+        },
         type: 'GET',
         dataType: 'jsonp',
         jsonp: 'callback',
-        timeout: 5000,
-        beforeSend: function () {
-            //console.log("getChat() sending data: ");
-            //console.log(data);
-        }
+        timeout: 5000
     })
             .always(function () {
+                s.removeItem(fN); // halt
                 myApp.hideIndicator();
             })
 
@@ -122,6 +130,10 @@ function getChat() {
                     if (res.error) {
                         myApp.alert('Desculpe, ocorreu um erro interno.', 'Erro');
                         return;
+                    }
+
+                    if (typeof res.length !== "undefined") {
+                        console.log(res.length + " results");
                     }
 
                     // construct
@@ -155,7 +167,10 @@ function getChat() {
                             html += '</div>';
                         }
                         sessionStorage.lastchat_inner = res[i].id;
-                        console.log("last:" + sessionStorage.lastchat_inner);
+                        console.log("lastchat_inner:" + sessionStorage.lastchat_inner);
+                        if (res.length === parseInt(i + 1)) {
+                            $("html, body, .page-content, .messages").animate({scrollTop: $(document).height()}, 1000);
+                        }
                     });
                     $('#getChat').append(html);
 

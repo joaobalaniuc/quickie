@@ -1,13 +1,14 @@
-
+$(window).on("load", function () {
+    loadingHide();
+});
 $(document).ready(function () {
     getSession();
     setInterval(function () {
         pageCheck();
     }, 300);
+
 });
-
 myApp.onPageInit('*', function (page) {
-
 });
 function pageRefresh() {
     var page = myApp.getCurrentView().activePage.name;
