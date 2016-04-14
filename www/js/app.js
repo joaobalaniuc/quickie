@@ -64,6 +64,14 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("online", onOnline, false);
+        function onOnline() {
+            alert("online");
+        }
+        document.addEventListener("offline", onOffline, false);
+        function onOffline() {
+            alert("offline");
+        }
     },
     // deviceready Event Handler
     //
@@ -80,18 +88,18 @@ var app = {
                     'Device Platform: ' + device.platform + '\r\n' +
                     'Device UUID: ' + device.uuid + '\r\n' +
                     'Device Version: ' + device.version + '\r\n';
-            
+
             //====================
             // Redirect
             //====================
             var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
             if (fn === "index.html") {
                 $('#logo').delay(2000).fadeOut("fast", function () {
-                    window.location.href = "quickie.html";
+                    //window.location.href = "quickie.html";
                 });
             }
             else if (fn !== "quickie.html") {
-                window.location.href = "quickie.html";
+                //window.location.href = "quickie.html";
             }
             app.receivedEvent('deviceready');
         }
