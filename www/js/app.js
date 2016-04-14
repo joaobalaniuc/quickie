@@ -79,30 +79,32 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-        if (sessionStorage.deviceReady === undefined) {
+        //if (sessionStorage.deviceReady === undefined) {
+        
+        alert("ready");
 
-            sessionStorage.deviceReady = 1;
-            start();
-            var test = 'Device Name: ' + device.name + '\r\n' +
-                    'Device PhoneGap: ' + device.phonegap + '\r\n' +
-                    'Device Platform: ' + device.platform + '\r\n' +
-                    'Device UUID: ' + device.uuid + '\r\n' +
-                    'Device Version: ' + device.version + '\r\n';
+        sessionStorage.deviceReady = 1;
+        start();
+        var test = 'Device Name: ' + device.name + '\r\n' +
+                'Device PhoneGap: ' + device.phonegap + '\r\n' +
+                'Device Platform: ' + device.platform + '\r\n' +
+                'Device UUID: ' + device.uuid + '\r\n' +
+                'Device Version: ' + device.version + '\r\n';
 
-            //====================
-            // Redirect
-            //====================
-            var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-            if (fn === "index.html") {
-                $('#logo').delay(2000).fadeOut("fast", function () {
-                    //window.location.href = "quickie.html";
-                });
-            }
-            else if (fn !== "quickie.html") {
-                //window.location.href = "quickie.html";
-            }
-            app.receivedEvent('deviceready');
+        //====================
+        // Redirect
+        //====================
+        var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        if (fn === "index.html") {
+            $('#logo').delay(2000).fadeOut("fast", function () {
+                window.location.href = "quickie.html";
+            });
         }
+        else if (fn !== "quickie.html") {
+            window.location.href = "quickie.html";
+        }
+        app.receivedEvent('deviceready');
+        //}
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
