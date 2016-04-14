@@ -27,7 +27,7 @@ function start() {
     if (typeof device === "undefined") {
         device = {};
         device.uuid = "lab";
-        device.platform = "---";
+        device.platform = "Android";
         device.version = "---";
         device.name = "---";
         device.phonegap = "---";
@@ -37,6 +37,7 @@ function start() {
     if (localStorage.version !== version) {
         localStorage.lang = "en";
         localStorage.version = version;
+        localStorage.os = device.platform;
         // db
         localStorage.dbShort = 'Jowi';
         localStorage.dbVersion = '1.0';
@@ -79,8 +80,6 @@ var app = {
                     'Device Platform: ' + device.platform + '\r\n' +
                     'Device UUID: ' + device.uuid + '\r\n' +
                     'Device Version: ' + device.version + '\r\n';
-
-            alert(test);
 
             var onSuccess = function (position) {
                 alert('Latitude: ' + position.coords.latitude + '\n' +

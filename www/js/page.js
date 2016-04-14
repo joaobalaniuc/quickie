@@ -2,14 +2,23 @@ $(window).on("load", function () {
     loadingHide();
 });
 $(document).ready(function () {
+
+    // Android layout fix
+    if (localStorage.os === "Android") {
+        console.log("android");
+        $('.navbar').css("margin-top", "-10px");
+    }
+
+    // Get data and fill
     getSession();
+
+    // Global timer
     setInterval(function () {
         pageCheck();
     }, 300);
 
 });
-myApp.onPageInit('*', function (page) {
-});
+
 function pageRefresh() {
     var page = myApp.getCurrentView().activePage.name;
     var view = myApp.getCurrentView().container.id;
@@ -90,3 +99,6 @@ $$(document).on('pageBack', '*', function (e) {
     $('#toolbar').show(); // back from messages
 });
 
+myApp.onPageInit('*', function (page) {
+    //
+});
