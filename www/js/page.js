@@ -4,6 +4,7 @@ $(window).on("load", function () {
 $(document).ready(function () {
 
     // Android layout fix
+    alert(localStorage.os);
     if (localStorage.os === "Android") {
         console.log("android");
         $('.navbar').css("margin-top", "-10px");

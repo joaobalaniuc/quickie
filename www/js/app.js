@@ -34,17 +34,17 @@ function start() {
     }
 
 //
-    if (localStorage.version !== version) {
-        localStorage.lang = "en";
-        localStorage.version = version;
-        localStorage.os = device.platform;
-        // db
-        localStorage.dbShort = 'Jowi';
-        localStorage.dbVersion = '1.0';
-        localStorage.dbName = 'Jowi';
-        localStorage.dbMaxSize = 65536;
-        //alert("new version");
-    }
+    //if (localStorage.version !== version) {
+    localStorage.lang = "en";
+    localStorage.version = version;
+    localStorage.os = device.platform;
+    // db
+    localStorage.dbShort = 'Jowi';
+    localStorage.dbVersion = '1.0';
+    localStorage.dbName = 'Jowi';
+    localStorage.dbMaxSize = 65536;
+    //alert("new version");
+    //}
 
 //--------------------------------------------
 // WEB SQL INICIO
@@ -80,23 +80,23 @@ var app = {
                     'Device Platform: ' + device.platform + '\r\n' +
                     'Device UUID: ' + device.uuid + '\r\n' +
                     'Device Version: ' + device.version + '\r\n';
-
-            var onSuccess = function (position) {
-                alert('Latitude: ' + position.coords.latitude + '\n' +
-                        'Longitude: ' + position.coords.longitude + '\n' +
-                        'Altitude: ' + position.coords.altitude + '\n' +
-                        'Accuracy: ' + position.coords.accuracy + '\n' +
-                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                        'Heading: ' + position.coords.heading + '\n' +
-                        'Speed: ' + position.coords.speed + '\n' +
-                        'Timestamp: ' + position.timestamp + '\n');
-            };
-            function onError(error) {
-                alert('code: ' + error.code + '\n' +
-                        'message: ' + error.message + '\n');
-            }
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
+            /*
+             var onSuccess = function (position) {
+             alert('Latitude: ' + position.coords.latitude + '\n' +
+             'Longitude: ' + position.coords.longitude + '\n' +
+             'Altitude: ' + position.coords.altitude + '\n' +
+             'Accuracy: ' + position.coords.accuracy + '\n' +
+             'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+             'Heading: ' + position.coords.heading + '\n' +
+             'Speed: ' + position.coords.speed + '\n' +
+             'Timestamp: ' + position.timestamp + '\n');
+             };
+             function onError(error) {
+             alert('code: ' + error.code + '\n' +
+             'message: ' + error.message + '\n');
+             }
+             navigator.geolocation.getCurrentPosition(onSuccess, onError);
+             */
             var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
             if (fn === "index.html") {
                 $('#logo').delay(2000).fadeOut("fast", function () {
