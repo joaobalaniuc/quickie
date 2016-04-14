@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <!--
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"/>
+        -->
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,8 +14,10 @@
         <link rel="stylesheet" href="build/css/framework7.material.css">
         <link rel="stylesheet" href="build/css/framework7.material.colors.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!--
         <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        -->
         <link href='https://fonts.googleapis.com/css?family=Nunito:300,400' rel='stylesheet' type='text/css'>
         <!--
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -20,18 +25,19 @@
         <link rel="stylesheet" href="css/kitchen-sink.css">
         <link rel="stylesheet" href="css/quickie.css">
         <link rel="icon" href="img/icon.png">
-        <!--
-        <link rel="stylesheet" href="http://openlayers.org/en/v3.12.1/css/ol.css" type="text/css">
-        <style>
-            .map {
-                height: 180px;
-                width: 100%;
-            }
-        </style>
-        <script src="http://openlayers.org/en/v3.12.1/build/ol.js" type="text/javascript"></script>
-        -->
+        <!-- MY LOADER -->
+        <link href="css/jw-loading.css" rel="stylesheet" />
+        <script src="js/jw-loading.js" type="text/javascript"></script>
     </head>
     <body class='theme-black'>
+
+        <div id="loading-bkg"></div>
+        <div id="loading-img">
+            <div data-id="spinner">
+                <img src="img/loadingdark.gif" style="width:112px;height:112px" />
+            </div>
+        </div>
+
         <div class="statusbar-overlay"></div>
         <div class="panel-overlay"></div>
 
@@ -377,20 +383,24 @@
         <script type="text/javascript" src="build/js/framework7.js"></script>
         <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="js/kitchen-sink.js"></script>
-        <script type="text/javascript" src="js/f7-views.js"></script>
+        <script type="text/javascript" src="js/views.js"></script>
         <!-- MY FUNCTIONS -->
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/funx.js"></script>
         <script type="text/javascript" src="js/arrays.js"></script>
-        <script type="text/javascript" src="js/str.js"></script>
+        <script type="text/javascript" src="js/class.dom.js"></script>
+        <script type="text/javascript" src="js/class.debug.js"></script>
+        <script type="text/javascript" src="js/class.store.js"></script>
+        <script type="text/javascript" src="js/class.str.js"></script>
         <!-- MY PAGES -->
         <script type="text/javascript" src="js/page.js"></script>
         <script type="text/javascript" src="js/page.index.js"></script>
         <script type="text/javascript" src="js/page.chat.js"></script>
-
         <script>
-            sessionStorage.deviceReady = 1;
+            // app start
             app.initialize();
+            
+            // session alias
+            s = sessionStorage;
         </script>
     </body>
 </html>
