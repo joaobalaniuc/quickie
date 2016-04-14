@@ -5,8 +5,8 @@ $(document).ready(function () {
 
     // Android layout fix
     if (localStorage.os === "Android") {
-        $('.navbar').attr('style', 'top: -3px !important');
-        $('.banner').css("margin-top", "-2px");
+        $('.navbar').attr('style', 'top: -10px !important');
+        $('.banner').css("margin-top", "-11px");
         $('#toplogo').css("margin-top", "10px");
     }
 

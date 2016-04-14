@@ -7,7 +7,8 @@ ul.global .item-text .info {display:none}
 ul.global .active {-webkit-line-clamp:8;max-height:120px}
 ul.global .info {}
 ul.global .item-after img {width:24px;height:24px;}
-
+/* PAGES */
+.banner {text-align:center}
 /* LISTA MULHERES */
 .online-block {text-align:center;margin-bottom:16px}
 .online-border {display:inline-block;padding:6px;border:1px solid #ddd;}

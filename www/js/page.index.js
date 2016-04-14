@@ -3,8 +3,8 @@ function getPeople() {
     //
     debug();
     //
-    if (halt(true))
-        return;
+    //if (halt(true))
+    //    return;
     var fN = fName();
     //
     if ($('.showProfile').length === 0) { // primeira vez
