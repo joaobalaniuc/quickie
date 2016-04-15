@@ -78,7 +78,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-
         /*
          var fbLoginSuccess = function (userData) {
          alert("UserInfo: " + JSON.stringify(userData));
@@ -109,11 +108,11 @@ var app = {
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
             $('#logo').delay(2000).fadeOut("fast", function () {
-                //window.location.href = "quickie.html";
+                window.location.href = "quickie.html";
             });
         }
         else if (fn !== "quickie.html") {
-            //window.location.href = "quickie.html";
+            window.location.href = "quickie.html";
         }
         app.receivedEvent('deviceready');
         //}
