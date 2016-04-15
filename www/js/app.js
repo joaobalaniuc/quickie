@@ -79,7 +79,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-
+        alert(1);
+        
+        
         var fbLoginSuccess = function (userData) {
             alert("UserInfo: " + JSON.stringify(userData));
         };
@@ -87,10 +89,11 @@ var app = {
         facebookConnectPlugin.login(["public_profile"],
                 fbLoginSuccess,
                 function (error) {
-                    alert("" + error)
+                    alert("" + error);
                 }
         );
 
+        alert(2);
 
         //if (sessionStorage.deviceReady === undefined) {
 
