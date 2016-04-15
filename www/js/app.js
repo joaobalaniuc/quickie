@@ -94,20 +94,25 @@ var app = {
         //if (sessionStorage.deviceReady === undefined) {
 
         sessionStorage.deviceReady = 1;
+
+        setTimeout(function () {
+            navigator.splashscreen.hide();
+        }, 2000);
+
         start();
         var test = 'Device Name: ' + device.name + '\r\n' +
                 'Device PhoneGap: ' + device.phonegap + '\r\n' +
                 'Device Platform: ' + device.platform + '\r\n' +
                 'Device UUID: ' + device.uuid + '\r\n' +
                 'Device Version: ' + device.version + '\r\n';
-        alert(test);
+        //alert(test);
 
         //====================
         // Redirect
         //====================
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
-            $('#logo').delay(2000).fadeOut("fast", function () {
+            $('#logo').delay(5000).fadeOut("fast", function () {
                 window.location.href = "quickie.html";
             });
         }
