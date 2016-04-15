@@ -48,11 +48,14 @@
     <gap:plugin name="org.apache.cordova.network-information"/>
     <gap:plugin name="org.apache.cordova.vibration"/>
     -->
-    <gap:plugin name="org.apache.cordova.device"/>
-    <gap:plugin name="org.apache.cordova.device-motion"/>
-    <gap:plugin name="org.apache.cordova.device-orientation"/>
-    <gap:plugin name="org.apache.cordova.dialogs"/>
-    <gap:plugin name="org.apache.cordova.splashscreen"/>
+    <plugin name="org.apache.cordova.device" source="pgb" spec="0.3.0" />
+    <plugin name="org.apache.cordova.device-motion" source="pgb" spec="0.2.11" />
+    <plugin name="org.apache.cordova.device-orientation" source="pgb" spec="0.3.11" />
+    <plugin name="org.apache.cordova.dialogs" source="pgb" spec="0.3.0" />
+    <plugin name="org.apache.cordova.geolocation" source="pgb" spec="0.3.12" />
+    <plugin name="org.apache.cordova.network-information" source="pgb" spec="0.2.15" />
+    <plugin name="org.apache.cordova.splashscreen" source="pgb" spec="1.0.0" />
+
     
     <icon src="icon.png"/>
     <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -81,7 +84,8 @@
     <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
     
     <access origin="*"/>
-    <plugin name="cordova-plugin-whitelist" version="1"/>
+    <plugin name="cordova-plugin-whitelist" spec="1.2.1" />
+
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>
     <allow-intent href="tel:*"/>
@@ -99,8 +103,8 @@
     <!-- My plugins -->
     <plugin name="org.apache.cordova.geolocation" spec="0.3.12" source="pgb" />
     <plugin name="org.apache.cordova.network-information" spec="0.2.15" source="pgb" />
-    <plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0" source="pgb">
-        <param name="APP_ID" value="1269306609763820" />
-        <param name="APP_NAME" value="Quickie" />
-    </plugin>
+    <plugin name="com.phonegap.plugins.facebookconnect" source="pgb" spec="0.9.0" />
+    <param name="APP_ID" value="1269306609763820" />
+    <param name="APP_NAME" value="Quickie" />
+</plugin>
 </widget>

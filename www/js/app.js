@@ -66,11 +66,11 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("online", onOnline, false);
         function onOnline() {
-            alert("online");
+            //alert("online");
         }
         document.addEventListener("offline", onOffline, false);
         function onOffline() {
-            alert("offline");
+            //alert("offline");
         }
     },
     // deviceready Event Handler
@@ -84,14 +84,13 @@ var app = {
             alert("UserInfo: " + JSON.stringify(userData));
         };
 
-        function initApp() {
-            facebookConnectPlugin.login(["public_profile"],
-                    fbLoginSuccess,
-                    function (error) {
-                        alert("" + error)
-                    }
-            );
-        }
+        facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) {
+                    alert("" + error)
+                }
+        );
+
 
         //if (sessionStorage.deviceReady === undefined) {
 
