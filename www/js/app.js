@@ -112,9 +112,9 @@ var app = {
         //====================
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
-            $('#logo').delay(5000).fadeOut("fast", function () {
-                window.location.href = "quickie.html";
-            });
+            setTimeout(function() {
+               window.location.href = "quickie.html"; 
+            }, 5000);
         }
         app.receivedEvent('deviceready');
         //}
