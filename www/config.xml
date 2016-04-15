@@ -24,7 +24,7 @@
     <preference name="webviewbounce" value="true"/>
     <preference name="prerendered-icon" value="true"/>
     <preference name="stay-in-webview" value="false"/>
-    <preference name="ios-statusbarstyle" value="default"/>
+    <!--<preference name="ios-statusbarstyle" value="default"/>-->
     <preference name="detect-data-types" value="true"/>
     <preference name="exit-on-suspend" value="false"/>
     <preference name="show-splash-screen-spinner" value="true"/>
@@ -100,7 +100,11 @@
         <allow-intent href="itms-apps:*"/>
     </platform>
     
-    <!-- My plugins -->
+    <!-- My plugins: statusbar (ios) -->
+    <plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <!-- My plugins: others -->
     <plugin name="org.apache.cordova.geolocation" spec="0.3.12" source="pgb" />
     <plugin name="org.apache.cordova.network-information" spec="0.2.15" source="pgb" />
     <plugin name="com.phonegap.plugins.facebookconnect" source="pgb" spec="0.9.0">
