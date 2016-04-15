@@ -21,7 +21,7 @@ function getChatList() {
         type: 'GET',
         dataType: 'jsonp',
         jsonp: 'callback',
-        timeout: 10000
+        timeout: 7000
     })
             .always(function () {
                 s.removeItem(fN); // halt

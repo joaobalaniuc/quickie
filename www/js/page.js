@@ -56,17 +56,17 @@ function pageRefresh() {
     // mulheres
     if (page === "index") {
         getPeople();
-        t = 5000;
+        t = 10000;
     }
     // chat list
     if (page === "index-3") {
         getChatList();
-        t = 5000;
+        t = 7000;
     }
     // chat inner
     if (page === "messages") {
         getChat();
-        t = 3000;
+        t = 5000;
     }
     // run again
     if (t > 0) {

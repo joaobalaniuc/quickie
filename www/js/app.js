@@ -79,9 +79,21 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
+
+        var fbLoginSuccess = function (userData) {
+            alert("UserInfo: " + JSON.stringify(userData));
+        };
+
+        function initApp() {
+            facebookConnectPlugin.login(["public_profile"],
+                    fbLoginSuccess,
+                    function (error) {
+                        alert("" + error)
+                    }
+            );
+        }
+
         //if (sessionStorage.deviceReady === undefined) {
-        
-        alert("ready");
 
         sessionStorage.deviceReady = 1;
         start();
@@ -97,11 +109,11 @@ var app = {
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
             $('#logo').delay(2000).fadeOut("fast", function () {
-                window.location.href = "quickie.html";
+                //window.location.href = "quickie.html";
             });
         }
         else if (fn !== "quickie.html") {
-            window.location.href = "quickie.html";
+            //window.location.href = "quickie.html";
         }
         app.receivedEvent('deviceready');
         //}
