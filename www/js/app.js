@@ -79,21 +79,18 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-        alert(1);
-        
-        
-        var fbLoginSuccess = function (userData) {
-            alert("UserInfo: " + JSON.stringify(userData));
-        };
-
-        facebookConnectPlugin.login(["public_profile"],
-                fbLoginSuccess,
-                function (error) {
-                    alert("" + error);
-                }
-        );
-
-        alert(2);
+        /*
+         var fbLoginSuccess = function (userData) {
+         alert("UserInfo: " + JSON.stringify(userData));
+         };
+         
+         facebookConnectPlugin.login(["public_profile"],
+         fbLoginSuccess,
+         function (error) {
+         alert("" + error);
+         }
+         );
+         */
 
         //if (sessionStorage.deviceReady === undefined) {
 
@@ -104,6 +101,7 @@ var app = {
                 'Device Platform: ' + device.platform + '\r\n' +
                 'Device UUID: ' + device.uuid + '\r\n' +
                 'Device Version: ' + device.version + '\r\n';
+        alert(test);
 
         //====================
         // Redirect
