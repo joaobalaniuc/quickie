@@ -1,5 +1,5 @@
 $(window).on("load", function () {
-    loadingHide();
+    //loadingHide();
 });
 $(document).ready(function () {
 
@@ -27,16 +27,16 @@ $(document).ready(function () {
      }
      navigator.geolocation.getCurrentPosition(onSuccess, onError);
      */
-
-    function onSuccess(position) {
-        $('#coord').html(position.coords.latitude + " x " + position.coords.longitude);
-    }
-    function onError(error) {
-        alert('code: ' + error.code + '\n' +
-                'message: ' + error.message + '\n');
-    }
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, {timeout: 30000});
-
+    /*
+     function onSuccess(position) {
+     $('#coord').html(position.coords.latitude + " x " + position.coords.longitude);
+     }
+     function onError(error) {
+     alert('code: ' + error.code + '\n' +
+     'message: ' + error.message + '\n');
+     }
+     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, {timeout: 30000});
+     */
 
 
     // Get data and fill
