@@ -97,7 +97,7 @@ var app = {
 
         setTimeout(function () {
             navigator.splashscreen.hide();
-        }, 2000);
+        }, 1000);
 
         start();
         var test = 'Device Name: ' + device.name + '\r\n' +
@@ -113,11 +113,11 @@ var app = {
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
             $('#logo').delay(5000).fadeOut("fast", function () {
-                window.location.href = "quickie.html";
+                //window.location.href = "quickie.html";
             });
         }
         else if (fn !== "quickie.html") {
-            window.location.href = "quickie.html";
+            //window.location.href = "quickie.html";
         }
         app.receivedEvent('deviceready');
         //}
