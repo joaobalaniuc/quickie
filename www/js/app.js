@@ -3,27 +3,28 @@
 //--------------------------------------------
 function start() {
 
+
 //alert("start");
 
     sessionStorage.debug = 1;
-    //--------------------------------------------
-    // PADRÕES
-    //--------------------------------------------
+//--------------------------------------------
+// PADRÕES
+//--------------------------------------------
     var version = '1.0.0';
-    // App config
-    localStorage.server = "http://10.0.0.8/quickie/server/";
-    //localStorage.server = "http://www.nickford.com.br/quickie/";
+// App config
+    //localStorage.server = "http://10.0.0.8/quickie/server/";
+    localStorage.server = "http://www.nickford.com.br/quickie/";
     localStorage.userid = 2;
     localStorage.username = "jwillbala@hotmail.com";
     localStorage.userpass = "bala123";
     localStorage.userlang = "en";
-    //
+//
     sessionStorage.activePage = "";
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
     sessionStorage.session_startdate = "2016-04-11 12:00";
     sessionStorage.session_id = 1;
-    //
+//
     if (typeof device === "undefined") {
         device = {};
         device.uuid = "lab";
@@ -34,17 +35,17 @@ function start() {
     }
 
 //
-    //if (localStorage.version !== version) {
+//if (localStorage.version !== version) {
     localStorage.lang = "en";
     localStorage.version = version;
     localStorage.os = device.platform;
-    // db
+// db
     localStorage.dbShort = 'Jowi';
     localStorage.dbVersion = '1.0';
     localStorage.dbName = 'Jowi';
     localStorage.dbMaxSize = 65536;
-    //alert("new version");
-    //}
+//alert("new version");
+//}
 
 //--------------------------------------------
 // WEB SQL INICIO
@@ -112,8 +113,8 @@ var app = {
         //====================
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         if (fn === "index.html") {
-            setTimeout(function() {
-               window.location.href = "quickie.html"; 
+            setTimeout(function () {
+                window.location.href = "quickie.html";
             }, 5000);
         }
         app.receivedEvent('deviceready');
