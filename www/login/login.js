@@ -35,7 +35,22 @@ $(document).ready(function () {
         }, 300);
     });
 
-    $('[data-show]').click(function () {
+    $('#facebook').click(function () {
+        alert("fb1");
+        var fbLoginSuccess = function (userData) {
+            alert("UserInfo: " + JSON.stringify(userData));
+        };
+
+        facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) {
+                    alert("" + error);
+                }
+        );
+        alert("fb2");
+    });
+
+    $('[ddata-show]').click(function () {
         var id = $(this).attr("data-show");
         setTimeout(function () {
             $('.data-show').hide();
@@ -197,16 +212,4 @@ $(window).on("load", function () {
 
         return array;
     }
-});
-$('#facebook').click(function () {
-    var fbLoginSuccess = function (userData) {
-        alert("UserInfo: " + JSON.stringify(userData));
-    };
-
-    facebookConnectPlugin.login(["public_profile"],
-            fbLoginSuccess,
-            function (error) {
-                alert("" + error);
-            }
-    );
 });
