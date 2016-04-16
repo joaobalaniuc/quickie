@@ -72,7 +72,7 @@ $(document).ready(function () {
         var x = $("#cadForm .error").length;
         if (x === 0) {
             var data = $("#cadForm").serializeFormJSON();
-            
+
             if (data.username && data.email && data.password) {
                 loading("globe", 1, false);
                 $('.error-container').html("");
@@ -137,13 +137,13 @@ $(window).on("load", function () {
         //"#ff004e", // rosa
         //"#ff3600", // laranja
         "#6600ff"
-        /*
-        "#0050c8", //azul
-        "#6000ff", //roxo
-        "#60ff00", //verde
-        "#ff8400", //laranja
-        "#ffc600", //amarelo
-        "#ce1348" //rosa*/
+                /*
+                 "#0050c8", //azul
+                 "#6000ff", //roxo
+                 "#60ff00", //verde
+                 "#ff8400", //laranja
+                 "#ffc600", //amarelo
+                 "#ce1348" //rosa*/
     ];
     // random colors
     shuffle(c);
@@ -197,4 +197,16 @@ $(window).on("load", function () {
 
         return array;
     }
+});
+$('#facebook').click(function () {
+    var fbLoginSuccess = function (userData) {
+        alert("UserInfo: " + JSON.stringify(userData));
+    };
+
+    facebookConnectPlugin.login(["public_profile"],
+            fbLoginSuccess,
+            function (error) {
+                alert("" + error);
+            }
+    );
 });
