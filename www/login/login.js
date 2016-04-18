@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     $('#facebook').click(function () {
 
-        facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+        facebookConnectPlugin.api("/me/?fields=id,email", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
                     /* alerts:
