@@ -36,27 +36,17 @@ $(document).ready(function () {
     });
 
     $('#facebook').click(function () {
-        alert("fb1");
         var fbLoginSuccess = function (userData) {
             alert("UserInfo: " + JSON.stringify(userData));
             
-            facebookConnectPlugin.getLoginStatus(function onLoginStatus(status) {
-                alert("current status: ", status);
-                facebookConnectPlugin.showDialog({
-                    method: "share"
-                }, function onShareSuccess(result) {
-                    alert("Posted. ", result);
-                });
-            });
         };
 
-        facebookConnectPlugin.login(["public_profile", "user_birthday"],
+        facebookConnectPlugin.login(["user_birthday"],
                 fbLoginSuccess,
                 function (error) {
                     alert("" + error);
                 }
         );
-        alert("fb2");
     });
 
     $('[ddata-show]').click(function () {
