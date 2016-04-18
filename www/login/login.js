@@ -37,28 +37,27 @@ $(document).ready(function () {
 
     $('#facebook').click(function () {
 
-        facebookConnectPlugin.api("/me/?fields=id,email", ["user_birthday"],
+        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
-                    /* alerts:
-                     {
-                     "id": "000000123456789",
-                     "email": "myemail@example.com"
-                     }
-                     */
                 },
                 function (error) {
                     alert("Failed: " + error);
                 });
 
 
-        var fbLoginSuccess = function (userData) {
-            alert("UserInfo: " + JSON.stringify(userData));
-
-        };
+        facebookConnectPlugin.getLoginStatus(
+                function (data) {
+                    "STATUS: " + JSON.stringify(data);
+                },
+                function (error) {
+                    alert("Erro: " + error);
+                });
 
         facebookConnectPlugin.login(["email", "user_birthday"],
-                fbLoginSuccess,
+                function (userData) {
+                    alert("LOGIN: " + JSON.stringify(userData));
+                },
                 function (error) {
                     alert("" + error);
                 }
