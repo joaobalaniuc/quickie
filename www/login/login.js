@@ -36,18 +36,31 @@ $(document).ready(function () {
     });
 
     $('#facebook').click(function () {
-        alert("fb1");
+
         var fbLoginSuccess = function (userData) {
             alert("UserInfo: " + JSON.stringify(userData));
+            facebookConnectPlugin.getAccessToken(function (token)
+            {
+                alert("Token: " + token);
+            }, function (err) {
+                alert("Could not get access token: " + err);
+            });
         };
 
-        facebookConnectPlugin.login(["public_profile"],
+        facebookConnectPlugin.login(["public_profile", "user_birthday"],
                 fbLoginSuccess,
                 function (error) {
                     alert("" + error);
                 }
         );
-        alert("fb2");
+
+        facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+                function (result) {
+                    alert("Result: " + JSON.stringify(result));
+                },
+                function (error) {
+                    alert("Failed: " + error);
+                });
     });
 
     $('[ddata-show]').click(function () {
