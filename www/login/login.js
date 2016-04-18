@@ -38,10 +38,24 @@ $(document).ready(function () {
     $('#facebook').click(function () {
         var fbLoginSuccess = function (userData) {
             alert("UserInfo: " + JSON.stringify(userData));
-            
+
+            facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+                    function (result) {
+                        alert("Result: " + JSON.stringify(result));
+                        /* alerts:
+                         {
+                         "id": "000000123456789",
+                         "email": "myemail@example.com"
+                         }
+                         */
+                    },
+                    function (error) {
+                        alert("Failed: " + error);
+                    });
+
         };
 
-        facebookConnectPlugin.login(["user_birthday"],
+        facebookConnectPlugin.login(["email", "user_birthday"],
                 fbLoginSuccess,
                 function (error) {
                     alert("" + error);
