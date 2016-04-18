@@ -53,15 +53,16 @@ $(document).ready(function () {
                 function (error) {
                     alert("Erro: " + error);
                 });
-
-        facebookConnectPlugin.login(["email", "user_birthday"],
-                function (userData) {
-                    alert("LOGIN: " + JSON.stringify(userData));
-                },
-                function (error) {
-                    alert("" + error);
-                }
-        );
+        /*
+         facebookConnectPlugin.login(["email", "user_birthday"],
+         function (userData) {
+         alert("LOGIN: " + JSON.stringify(userData));
+         },
+         function (error) {
+         alert("" + error);
+         }
+         );
+         */
     });
 
     $('[ddata-show]').click(function () {
