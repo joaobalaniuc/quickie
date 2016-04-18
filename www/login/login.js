@@ -36,15 +36,9 @@ $(document).ready(function () {
     });
 
     $('#facebook').click(function () {
-
+        alert("fb1");
         var fbLoginSuccess = function (userData) {
             alert("UserInfo: " + JSON.stringify(userData));
-            facebookConnectPlugin.getAccessToken(function (token)
-            {
-                alert("Token: " + token);
-            }, function (err) {
-                alert("Could not get access token: " + err);
-            });
         };
 
         facebookConnectPlugin.login(["public_profile", "user_birthday"],
@@ -53,14 +47,7 @@ $(document).ready(function () {
                     alert("" + error);
                 }
         );
-
-        facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
-                function (result) {
-                    alert("Result: " + JSON.stringify(result));
-                },
-                function (error) {
-                    alert("Failed: " + error);
-                });
+        alert("fb2");
     });
 
     $('[ddata-show]').click(function () {
