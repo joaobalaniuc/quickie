@@ -29,6 +29,11 @@ and open the template in the editor.
         <link href="css/jw-loading.css" rel="stylesheet" />
         <script src="js/jw-loading.js" type="text/javascript"></script>
         <script>
+            // alias session        
+            s = sessionStorage;
+            s.locId = 1;
+
+            // check mobile
             var isMobile = false; //initiate as false
             // device detection
             if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -36,79 +41,53 @@ and open the template in the editor.
                 isMobile = true;
 
             if (!isMobile) {
-                sessionStorage.deviceReady = 1;
+                //sessionStorage.deviceReady = 1;
                 start();
             }
             app.initialize();
 
-            //$(document).ready(function () {
-            //loading("spinner", 1, false);
-            //});
         </script>
 
     </head>
     <body>
-        <!--
-        <div id="loading-bkg"></div>
-        <div id="loading-img">
-            <div data-id="spinner">
-                <img src="img/loadingdark.gif" style="width:112px;height:112px" />
-            </div>
-            <div data-id="globe" style="display:none">
-                <img src="img/loading.gif" style="width:112px;height:112px" /><br/>
-                Criando sua conta...<br/>
-                <a href="#">Cancelar</a>
-            </div>
-        </div>
-        -->
 
         <div id="content">
 
-            <div data-show-id="login" class="data-show">
+            <img src="img/quickie-logo.png" class="logo mb20" />
 
-                <img src="img/quickie-logo.png" class="logo mb20" />
+            <div data-show-id="searching" class="data-show">
+                <div class="cssload-wrap">
+                    <div class="cssload-circle"></div>
+                    <div class="cssload-circle"></div>
+                    <div class="cssload-circle"></div>
+                    <div class="cssload-circle"></div>
+                    <div class="cssload-circle"></div>
+                </div>
 
-                <div style="display:none;">
-                    <div class="cssload-wrap">
-                        <div class="cssload-circle"></div>
-                        <div class="cssload-circle"></div>
-                        <div class="cssload-circle"></div>
-                        <div class="cssload-circle"></div>
-                        <div class="cssload-circle"></div>
-                    </div>
-
-                    <div style="text-align:center;line-height:20px;margin-top:32px" class="mb20">
-                        <div class=" mb10">
+                <div id="status" class="mb20">
+                    <div id="status_msg">
+                        <div class="mb10">
                             <i class="fa fa-warning" style="font-size:32px"></i>
                         </div>
                         Você não está em um estabelecimento credenciado.
                     </div>
                 </div>
+            </div>
 
-                <div style="ddisplay:none;">
-                    <div class="mb20">
-                        <img src="img/woods.png" width="180" />
-                    </div>
-
-                    <div id="facebook" data-show="register" class="but light round mb10">
-                        <i class="fa fa-facebook"></i> Entrar com Facebook
-                    </div>
-
-                    <div id="twitter" data-show="register" class="but light round mb30">
-                        <i class="fa fa-twitter"></i> Entrar com Twitter
-                    </div>
+            <div style="display:none;" data-show-id="login" class="data-show">
+                <div class="mb20">
+                    <img id="locLogo" src="img/woods.png" width="190" />
                 </div>
-                <!--
-                                <div data-show="register" class="but light round mb10">
-                                    <i class="fa fa-facebook"></i> Entrar com Facebook
-                                </div>
-                
-                                <div data-show="register" class="but light round mb30">
-                                    <i class="fa fa-twitter"></i> Entrar com Twitter
-                                </div>
-                -->
 
-            </div> <!-- /login -->
+                <div id="facebook" ddata-show="register" class="but light round mb10">
+                    <i class="fa fa-facebook"></i> Entrar com Facebook
+                </div>
+
+                <div id="twitter" ddata-show="register" class="but light round mb30">
+                    <i class="fa fa-twitter"></i> Entrar com Twitter
+                </div>
+            </div>
+
 
             <div id="footer" class="center mb20">
                 Quickie © - Copyright 2016 - By Nickford
@@ -118,93 +97,6 @@ and open the template in the editor.
 
         <div class="bkg"></div>
 
-        <!--
-        <script>
-
-        function fb_login() {
-            FB.login(function (response) {
-                if (response.authResponse) {
-                    console.log('logando...');
-                    console.log(response); // dump complete info
-                    access_token = response.authResponse.accessToken; //get access token
-                    user_id = response.authResponse.userID; //get FB UID
-
-                    FB.api('/me', function (response) {
-                        console.log('logado.');
-
-                        $.each(response, function (key, value) {
-                            console.log(key + ": " + value);
-                        });
-
-                        $.ajax({
-                            url: "login.facebook.post.php",
-                            type: "POST",
-                            data: response,
-                            success: function (res) {
-                                //window.location = 'return.php?go=1';
-                                console.log('redirect...');
-                                console.log(res);
-                            }
-                        });
-                    });
-
-                } else {
-                    //user hit cancel button
-                    console.log('login aborted by user.');
-
-                }
-            }, {//,user_friends
-                scope: 'user_birthday,user_posts,publish_actions,public_profile,email'
-            });
-        }
-
-        // This is called with the results from from FB.getLoginStatus().
-        function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            if (response.status === 'connected') {
-                // está "on" no face, e no app
-                console.log('logged. redirect.');
-                //window.location = 'return.php?go=1';
-            } else if (response.status === 'not_authorized') {
-                // está "on" no face, mas não cadastrado
-            } else {
-                // não está "on" no face
-            }
-        }
-
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1604646033125808',
-                oauth: true,
-                status: true,
-                cookie: true,
-                xfbml: true,
-                version: 'v2.2'
-            });
-
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-
-        };
-
-        // Load the SDK asynchronously
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-
-
-
-    </script>
-        -->
     </body>
 
 

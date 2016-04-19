@@ -7,6 +7,9 @@ body {background:#000;overflow:hidden}
     height:480px;top:50%;margin-top:-240px;
     width:280px;max-width:100%;left:50%;margin-left:-140px;
 }
+#status {
+    text-align:center;line-height:20px;margin-top:32px
+}
 #footer {
     border-top:1px dotted #fff;font-size:12px;
     letter-spacing:1px;line-height:24px;
