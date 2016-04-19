@@ -37,17 +37,7 @@ $(document).ready(function () {
         }, 300);
     });
     $('#facebook').click(function () {
-        facebookConnectPlugin.getLoginStatus(function (response) {
-            if (response.status === 'connected') {
-                var uid = response.authResponse.userID;
-                var accessToken = response.authResponse.accessToken;
-                alert("CONNECTED");
-            } else if (response.status === 'not_authorized') {
-                alert("NOT AUTH");
-            } else {
-                alert("NOG LOGGED");
-            }
-        });
+
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
@@ -84,13 +74,14 @@ $(document).ready(function () {
     function check() {
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_locId !== sessionStorage.locId) {
+            console.log(1);
 
             sessionStorage.old_locId = sessionStorage.locId;
 
             // ENCONTROU LOCAL
             if (sessionStorage.locId) {
 
-                myApp.showIndicator();
+                //myApp.showIndicator();
 
                 $.ajax({
                     url: localStorage.server + "/getlocal.json.php",
@@ -103,28 +94,41 @@ $(document).ready(function () {
                     timeout: 5000
                 })
                         .always(function () {
-                            s.removeItem(fN); // halt
-                            myApp.hideIndicator();
+                            //s.removeItem(fN); // halt
+                            //myApp.hideIndicator();
                         })
                         .fail(function () {
-                            myApp.alert('Desculpe, verifique sua conexão e tente novamente.', 'Erro');
+                            //myApp.alert('Desculpe, verifique sua conexão e tente novamente.', 'Erro');
                         })
                         .done(function (res) {
                             if (res !== null) {
                                 if (res.error) {
-                                    myApp.alert('Desculpe, ocorreu um erro interno.' + res.error, 'Erro');
+                                    //myApp.alert('Desculpe, ocorreu um erro interno.' + res.error, 'Erro');
                                     return;
                                 }
                                 if (typeof res.length !== "undefined") {
                                     console.log(res.length + " results");
                                 }
-                                sessionStorage.locId = res.id;
-                                sessionStorage.locLabel = res.label;
-                                sessionStorage.locName = res.name;
-                                sessionStorage.locLogo = res.img_logo;
-                                alert(sessionStorage.locLogo);
+                                sessionStorage.locId = res[0].id;
+                                sessionStorage.locLabel = res[0].label;
+                                sessionStorage.locName = res[0].name;
+                                sessionStorage.locLogo = res[0].img_logo;
+
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
+
+                                facebookConnectPlugin.getLoginStatus(function (response) {
+                                    if (response.status === 'connected') {
+                                        var uid = response.authResponse.userID;
+                                        var accessToken = response.authResponse.accessToken;
+                                        window.location.href = "quickie.html";
+                                    } else if (response.status === 'not_authorized') {
+                                        alert("NOT AUTH");
+                                    } else {
+                                        alert("NOG LOGGED");
+                                    }
+                                });
+                                
                             } // res not null
                         }); // after ajax
             }

@@ -14,9 +14,7 @@ function start() {
     // App config
     localStorage.server = "http://10.0.0.6/quickie/server/";
     //localStorage.server = "http://www.nickford.com.br/quickie/";
-    localStorage.userid = 2;
-    localStorage.username = "jwillbala@hotmail.com";
-    localStorage.userpass = "bala123";
+    localStorage.userid = 1;
     //
     sessionStorage.activePage = "";
     sessionStorage.lastchat = 0; // last msg id (#index-3)
