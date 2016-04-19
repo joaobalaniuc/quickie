@@ -74,7 +74,8 @@ $(document).ready(function () {
     function check() {
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_locId !== sessionStorage.locId) {
-            console.log(1);
+            
+            alert(sessionStorage.locId);
 
             sessionStorage.old_locId = sessionStorage.locId;
 
