@@ -2,52 +2,17 @@
 // INICIAR DISPOSITIVO
 //--------------------------------------------
 function start() {
-
-
-//alert("start");
-
-    sessionStorage.debug = 1;
-    //--------------------------------------------
-    // PADRÕES
-    //--------------------------------------------
-    var version = '1.0.0';
     // App config
     localStorage.server = "http://10.0.0.6/quickie/server/";
     //localStorage.server = "http://www.nickford.com.br/quickie/";
     localStorage.userid = 1;
     //
+    sessionStorage.debug = 1;
     sessionStorage.activePage = "";
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
     sessionStorage.session_startdate = "2016-04-11 12:00";
     sessionStorage.session_id = 1;
-    //
-    if (typeof device === "undefined") {
-        device = {};
-        device.uuid = "lab";
-        device.platform = "Android";
-        device.version = "---";
-        device.name = "---";
-        device.phonegap = "---";
-    }
-
-//
-//if (localStorage.version !== version) {
-    localStorage.lang = "en";
-    localStorage.version = version;
-    localStorage.os = device.platform;
-// db
-    localStorage.dbShort = 'Jowi';
-    localStorage.dbVersion = '1.0';
-    localStorage.dbName = 'Jowi';
-    localStorage.dbMaxSize = 65536;
-//alert("new version");
-//}
-
-//--------------------------------------------
-// WEB SQL INICIO
-//--------------------------------------------
-//dbCreate();
 }
 
 var app = {
@@ -96,10 +61,9 @@ var app = {
                 start();
                 // SPLASHSCREEN (CONFIG.XML BUGFIX)
                 setTimeout(function () {
-                    navigator.splashscreen.hide();
+                    //navigator.splashscreen.hide();
                 }, 1000);
-                
-            break;
+                break;
         }
     },
     // Update DOM on a Received Event
