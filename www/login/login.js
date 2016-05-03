@@ -1,13 +1,9 @@
-
-
 $(document).ready(function () {
-
-    alert(0);
 
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
 
-    //$('#locLogo').attr("src", localStorage.server + "/img/woodsvix.png");
+    bkgColors;
 
     //=====================================
     // LAYOUT FUNCTIONS
@@ -75,7 +71,7 @@ $(document).ready(function () {
     }, 500);
 
     function check() {
-        alert("check0");
+
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
 
@@ -118,12 +114,12 @@ $(document).ready(function () {
                                 sessionStorage.locName = res[0].name;
                                 sessionStorage.locLogo = res[0].img_logo;
 
-                                alert(sessionStorage.locLogo);
+                                //alert(sessionStorage.locLogo);
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
 
                                 facebookConnectPlugin.getLoginStatus(function (response) {
-                                    alert(2);
+                                    //alert(2);
                                     if (response.status === 'connected') {
                                         var uid = response.authResponse.userID;
                                         var accessToken = response.authResponse.accessToken;
@@ -231,11 +227,16 @@ $(document).ready(function () {
 //=======================================
 $(window).on("load", function () {
     loadingHide();
-    // =======================================================
-    // 
-    // COLOR BACKGROUND
-    // 
-    // =======================================================
+
+});
+
+// =======================================================
+// 
+// COLOR BACKGROUND
+// 
+// =======================================================
+var bkgColors = $(function () {
+
     // array colors
     var c = [
         "#ff0024", // verm

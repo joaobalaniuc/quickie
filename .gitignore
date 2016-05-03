@@ -4,6 +4,8 @@ backup/
 server/
 nbproject/
 swiper/
+platforms/
+plugins/
 
 # Windows image file caches
 Thumbs.db
