@@ -37,7 +37,6 @@ $(document).ready(function () {
         }, 300);
     });
     $('#facebook').click(function () {
-
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
