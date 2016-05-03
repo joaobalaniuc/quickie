@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
     sessionStorage.removeItem("old_data_show");
-    sessionStorage.removeItem("old_locId");
+    sessionStorage.removeItem("old_loc_id");
 
     //=====================================
     // LAYOUT FUNCTIONS
@@ -73,19 +73,19 @@ $(document).ready(function () {
 
     function check() {
         // HOUVE ALTERAÇÃO NO LOCAL
-        if (sessionStorage.old_locId !== sessionStorage.locId) {
+        if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
             
-            sessionStorage.old_locId = sessionStorage.locId;
+            sessionStorage.old_loc_id = sessionStorage.loc_id;
 
             // ENCONTROU LOCAL
-            if (sessionStorage.locId) {
+            if (sessionStorage.loc_id) {
 
                 //myApp.showIndicator();
 
                 $.ajax({
                     url: localStorage.server + "/getlocal.json.php",
                     data: {
-                        'id': sessionStorage.locId
+                        'id': sessionStorage.loc_id
                     },
                     type: 'GET',
                     dataType: 'jsonp',
@@ -108,7 +108,7 @@ $(document).ready(function () {
                                 if (typeof res.length !== "undefined") {
                                     console.log(res.length + " results");
                                 }
-                                sessionStorage.locId = res[0].id;
+                                sessionStorage.loc_id = res[0].id;
                                 sessionStorage.locLabel = res[0].label;
                                 sessionStorage.locName = res[0].name;
                                 sessionStorage.locLogo = res[0].img_logo;
@@ -133,7 +133,7 @@ $(document).ready(function () {
             }
             // SEM LOCAL
             else {
-                datashow("searching");
+                datashow("login");
             }
         }
     }

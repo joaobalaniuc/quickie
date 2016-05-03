@@ -3,16 +3,27 @@
 //--------------------------------------------
 function start() {
     // App config
-    localStorage.server = "http://10.0.0.6/quickie/server/";
+    localStorage.server = "http://10.0.0.9/quickie/server/";
     //localStorage.server = "http://www.nickford.com.br/quickie/";
-    localStorage.userid = 1;
+    //localStorage.server = "http://localhost/quickie/server/";
+    localStorage.user_id = 1;
+    localStorage.session_id = 1;
+    localStorage.session_startdate = "2016-04-11 12:00";
     //
     sessionStorage.debug = 1;
     sessionStorage.activePage = "";
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
-    sessionStorage.session_startdate = "2016-04-11 12:00";
-    sessionStorage.session_id = 1;
+    //
+    if (typeof device === "undefined") {
+        //alert(1);
+        localStorage.os = "iOS";
+        localStorage.osver = "9.0";
+    }
+    else {
+        localStorage.os = device.platform;
+        localStorage.osver = device.version;
+    }
 }
 
 var app = {

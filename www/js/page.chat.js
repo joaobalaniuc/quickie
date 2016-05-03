@@ -13,8 +13,7 @@ function getChatList() {
     $.ajax({
         url: localStorage.server + "/chat-list.json.php",
         data: {
-            'username': localStorage.username,
-            'userpass': localStorage.userpass,
+            'user_id': localStorage.user_id,
             'startdate': sessionStorage.session_startdate,
             'lastchat': sessionStorage.lastchat
         },
