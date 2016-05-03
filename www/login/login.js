@@ -2,10 +2,12 @@
 
 $(document).ready(function () {
 
+    alert(0);
+
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
 
-    $('#locLogo').attr("src", localStorage.server + "/img/woodsvix.png");
+    //$('#locLogo').attr("src", localStorage.server + "/img/woodsvix.png");
 
     //=====================================
     // LAYOUT FUNCTIONS
@@ -73,6 +75,7 @@ $(document).ready(function () {
     }, 500);
 
     function check() {
+        alert("check0");
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
 
@@ -86,7 +89,7 @@ $(document).ready(function () {
                 $.ajax({
                     url: localStorage.server + "/getlocal.json.php",
                     data: {
-                        'id': sessionStorage.loc_id
+                        'loc_id': sessionStorage.loc_id
                     },
                     type: 'GET',
                     dataType: 'jsonp',
@@ -98,6 +101,7 @@ $(document).ready(function () {
                             //myApp.hideIndicator();
                         })
                         .fail(function () {
+                            alert("fail");
                             //myApp.alert('Desculpe, verifique sua conexão e tente novamente.', 'Erro');
                         })
                         .done(function (res) {
@@ -114,6 +118,7 @@ $(document).ready(function () {
                                 sessionStorage.locName = res[0].name;
                                 sessionStorage.locLogo = res[0].img_logo;
 
+                                alert(sessionStorage.locLogo);
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
 
