@@ -5,6 +5,8 @@ $(document).ready(function () {
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
 
+    $('#locLogo').attr("src", localStorage.server + "/img/woodsvix.png");
+
     //=====================================
     // LAYOUT FUNCTIONS
     //=====================================
@@ -73,7 +75,7 @@ $(document).ready(function () {
     function check() {
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
-            
+
             sessionStorage.old_loc_id = sessionStorage.loc_id;
 
             // ENCONTROU LOCAL
@@ -116,6 +118,7 @@ $(document).ready(function () {
                                 datashow("login");
 
                                 facebookConnectPlugin.getLoginStatus(function (response) {
+                                    alert(2);
                                     if (response.status === 'connected') {
                                         var uid = response.authResponse.userID;
                                         var accessToken = response.authResponse.accessToken;
@@ -126,7 +129,7 @@ $(document).ready(function () {
                                         alert("NOG LOGGED");
                                     }
                                 });
-                                
+
                             } // res not null
                         }); // after ajax
             }
@@ -222,7 +225,6 @@ $(document).ready(function () {
 // EFFECTS => AFTER ENTIRE PAGE LOAD
 //=======================================
 $(window).on("load", function () {
-
     loadingHide();
     // =======================================================
     // 
