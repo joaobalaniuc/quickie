@@ -15,6 +15,22 @@ function start() {
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
     //
+    facebookConnectPlugin.login(['email'], function (response) {
+
+        me.logged_in = true;
+        alert('logged in successfully');
+        alert(JSON.stringify(response.authResponse));
+
+        localStorageService.set('user.id', response.authResponse.userID);
+        localStorageService.set('user.access_token', response.authResponse.accessToken);
+
+        RequestsService.sendData(response.authResponse);
+
+    }, function (err) {
+        RequestsService.sendData(err);
+        alert('an error occured while trying to login. please try again.');
+    });
+
     facebookConnectPlugin.api("me/?fields=id,email", ["user_birthday"],
             function (result) {
                 alert("Result: " + JSON.stringify(result));
