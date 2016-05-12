@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
-
+    /*
     facebookConnectPlugin.logout(
             function () {
                 alert("logout ok");
@@ -10,7 +10,7 @@ $(document).ready(function () {
             function () {
                 alert("logout error");
             });
-
+    */
     bkgColors;
 
     //=====================================
@@ -46,6 +46,7 @@ $(document).ready(function () {
     });
 
     $('#facebook').click(function () {
+        alert(1);
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
