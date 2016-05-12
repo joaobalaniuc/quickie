@@ -45,23 +45,28 @@ $(document).ready(function () {
         }, 300);
     });
     $('#facebook').click(function () {
+        
+        fb.login();
         //alert(1);
-        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["public_profile", "user_birthday"],
-                function (result) {
-                    alert("Result: " + JSON.stringify(result));
-                    /*
-                     localStorage.fb_id = result.id;
-                     localStorage.fb_first_name = result.first_name;
-                     localStorage.fb_last_name = result.last_name;
-                     localStorage.fb_gender = result.gender;
-                     localStorage.fb_email = result.email;
-                     localStorage.fb_birthday = result.birthday;
-                     alert(localStorage.fb_email);
-                     */
-                },
-                function (error) {
-                    alert("Failed: " + error);
-                });
+        
+        /*
+         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["public_profile", "user_birthday"],
+         function (result) {
+         alert("Result: " + JSON.stringify(result));
+         
+         localStorage.fb_id = result.id;
+         localStorage.fb_first_name = result.first_name;
+         localStorage.fb_last_name = result.last_name;
+         localStorage.fb_gender = result.gender;
+         localStorage.fb_email = result.email;
+         localStorage.fb_birthday = result.birthday;
+         alert(localStorage.fb_email);
+         
+         },
+         function (error) {
+         alert("Failed: " + error);
+         });
+         */
     });
     //=====================================
     // SHOW INLINE PAGES
@@ -89,7 +94,6 @@ $(document).ready(function () {
         checkLoc();
         checkConex();
     }, 500);
-
     function checkConex() {
 
         // HOUVE ALTERAÇÃO NA CONEXÃO
@@ -97,7 +101,6 @@ $(document).ready(function () {
 
             sessionStorage.old_online !== sessionStorage.online;
             sessionStorage.old_loc_id = 0;
-
             // está offline
             if (sessionStorage.online != "true") {
                 if ($('[data-show-id="login"]').is(":visible")) {
