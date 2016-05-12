@@ -22,6 +22,9 @@ ul.global .item-after img {width:24px;height:24px;}
 [data-page=profile] .content-block {margin:0 !important;padding:0 !important}
 [data-page=profile] .page-content {margin-top:30px;padding-bottom:100px}
 [data-page=profile] .content-inner {padding:20px;margin-top:-10px}
+[data-page=profile] .item-link .item-media {min-width:20px;color:#1976d2}
+[data-page=profile] .item-link .item-title {color:#1976d2}
+[data-page=profile] .item-link .red {color:#ff0024}
 /* BOTTOM TOOLBAR */
 .jwbar {height:auto;height:60px;top: auto !important; bottom: 0 !important;background:#f3f3f3;border-top:1px solid #ddd}
 .jwbar div a span {text-transform:none !important;font-weight:500;color:#333;font-size:12px;margin:auto !important;margin-top:0}
@@ -92,7 +95,21 @@ i.tabbar-demo-icon-4 {
     -khtml-border-radius: 10px;
     border-radius: 10px;
     behavior: url(border-radius.htc);
+}
+.circle {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
     border-radius: 10px;
+    behavior: url(border-radius.htc);
+    
+}
+.blur {
+    -webkit-filter: blur(40px) brightness(150%) saturate(1);
+    -moz-filter: blur(30px);
+    -o-filter: blur(30px);
+    -ms-filter: blur(30px);
+    filter: blur(30px);
 }
 /* Loading */
 

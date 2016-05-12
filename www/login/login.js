@@ -36,6 +36,7 @@ $(document).ready(function () {
             bkgSize();
         }, 300);
     });
+    
     $('#facebook').click(function () {
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
@@ -123,7 +124,8 @@ $(document).ready(function () {
                                     if (response.status === 'connected') {
                                         var uid = response.authResponse.userID;
                                         var accessToken = response.authResponse.accessToken;
-                                        window.location.href = "quickie.html";
+                                        //window.location.href = "quickie.html";
+                                        alert("AUTH OK");
                                     } else if (response.status === 'not_authorized') {
                                         alert("NOT AUTH");
                                     } else {

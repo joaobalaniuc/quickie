@@ -60,7 +60,7 @@ function getPeople(gender) {
                         html += '<div class="online-img round" style="background-image:url(https://graph.facebook.com/' + res[i].id_fb + '/picture?type=large);">';
                         html += '</div>';
                         html += '</div>';
-                        html += '<div>' + res[i].first_name + ', ' + age + '</div>';
+                        html += '<div>' + res[i].first_name + '</div>';
                         html += '</a></div>';
                         if (res.length === parseInt(i + 1)) {
                             //console.log("aaa");
@@ -76,7 +76,7 @@ function getPeople(gender) {
 $$(document).on('click', '.showProfile', function (e) {
     sessionStorage.profileEmail = $(this).attr("data-email");
     sessionStorage.profileNome = $(this).attr("data-nome");
-    sessionStorage.profileIdade = $(this).attr("data-idade");
+    sessionStorage.profileIdade = $(this).attr("data-age");
     sessionStorage.profileProfissao = $(this).attr("data-profissao");
     sessionStorage.profileSobre = $(this).attr("data-sobre");
     sessionStorage.profileImg = "https://graph.facebook.com/" + $(this).attr("data-fb") + "/picture?type=large";
