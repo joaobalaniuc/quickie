@@ -3,6 +3,14 @@ $(document).ready(function () {
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
 
+    facebookConnectPlugin.logout(
+            function () {
+                alert("logout ok");
+            },
+            function () {
+                alert("logout error");
+            });
+
     bkgColors;
 
     //=====================================
