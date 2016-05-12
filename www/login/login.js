@@ -136,7 +136,7 @@ $(document).ready(function () {
                                 //alert(sessionStorage.locLogo);
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
-
+                                /*
                                 facebookConnectPlugin.getLoginStatus(function (response) {
                                     //alert(2);
                                     if (response.status === 'connected') {
@@ -150,6 +150,7 @@ $(document).ready(function () {
                                         alert("NOG LOGGED");
                                     }
                                 });
+                                */
 
                             } // res not null
                         }); // after ajax
