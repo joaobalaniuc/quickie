@@ -46,7 +46,7 @@ $(document).ready(function () {
     });
     $('#facebook').click(function () {
         //alert(1);
-        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["user_birthday"],
+        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["public_profile", "user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
                     /*
@@ -89,13 +89,14 @@ $(document).ready(function () {
         checkLoc();
         checkConex();
     }, 500);
-    
+
     function checkConex() {
 
         // HOUVE ALTERAÇÃO NA CONEXÃO
         if (sessionStorage.old_online !== sessionStorage.online) {
 
             sessionStorage.old_online !== sessionStorage.online;
+            sessionStorage.old_loc_id = 0;
 
             // está offline
             if (sessionStorage.online != "true") {

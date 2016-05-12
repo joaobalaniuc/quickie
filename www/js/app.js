@@ -15,6 +15,15 @@ function start() {
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
     //
+    alert("fb0");
+    facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["public_profile", "user_birthday"],
+            function (result) {
+                alert("Result: " + JSON.stringify(result));
+            },
+            function (error) {
+                alert("Failed: " + error);
+            });
+    alert("fb1");
 }
 
 var app = {
