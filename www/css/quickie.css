@@ -102,7 +102,7 @@ i.tabbar-demo-icon-4 {
     -khtml-border-radius: 10px;
     border-radius: 10px;
     behavior: url(border-radius.htc);
-    
+
 }
 .blur {
     -webkit-filter: blur(40px) brightness(150%) saturate(1);

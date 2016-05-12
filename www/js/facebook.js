@@ -5,7 +5,7 @@
 var fb = {
     login: function () {
         facebookConnectPlugin.login(["email", "public_profile"], function (result) {
-            alert(JSON.stringify(result));
+            kons("fb.login() = " + JSON.stringify(result));
             localStorage.fb_id = result.authResponse.userID;
             localStorage.fb_token = result.authResponse.accessToken;
         }, function (err) {
@@ -15,7 +15,7 @@ var fb = {
     getUserInfo: function () {
         facebookConnectPlugin.api(localStorage.fb_id + "/?fields=id,email,first_name,last_name,gender,picture,birthday", ["public_profile", "user_birthday"],
                 function (result) {
-                    alert("Result: " + JSON.stringify(result));
+                    alert("fb.getUserInfo() = " + JSON.stringify(result));
                     localStorage.fb_id = result.id;
                     localStorage.fb_first_name = result.first_name;
                     localStorage.fb_last_name = result.last_name;
@@ -30,11 +30,12 @@ var fb = {
     },
     getLoginStatus: function () {
         facebookConnectPlugin.getLoginStatus(function (response) {
+            kons("fb.getLoginStatus() = " + response);
             if (response.status === 'connected') {
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
                 //window.location.href = "quickie.html";
-                alert("AUTH OK");
+                //alert("AUTH OK");
                 return "OK MESMO";
             } else if (response.status === 'not_authorized') {
                 alert("NOT AUTH");
@@ -46,10 +47,10 @@ var fb = {
     logout: function () {
         facebookConnectPlugin.logout(
                 function () {
-                    alert("logout ok");
+                    kons("logout ok");
                 },
                 function () {
-                    alert("logout error");
+                    kons("logout error");
                 });
     }
 };

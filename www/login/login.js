@@ -108,7 +108,7 @@ $(document).ready(function () {
             if (sessionStorage.loc_id > 0) {
 
                 var test = fb.getLoginStatus();
-                aler(test);
+                alert(test);
 
                 //myApp.showIndicator();
 
