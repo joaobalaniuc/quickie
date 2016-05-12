@@ -86,7 +86,7 @@ $(document).ready(function () {
     checkLoc();
     checkConex();
     setInterval(function () {
-        check();
+        checkLoc();
         checkConex();
     }, 500);
     
