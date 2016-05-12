@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
+    sessionStorage.removeItem("old_online");
     /*
      facebookConnectPlugin.logout(
      function () {
@@ -12,7 +13,6 @@ $(document).ready(function () {
      });
      */
     bkgColors;
-
     //=====================================
     // LAYOUT FUNCTIONS
     //=====================================
@@ -44,7 +44,6 @@ $(document).ready(function () {
             bkgSize();
         }, 300);
     });
-
     $('#facebook').click(function () {
         //alert(1);
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["user_birthday"],
@@ -84,29 +83,46 @@ $(document).ready(function () {
     // =======================================================
     // TIMER CHECK
     // =======================================================
-    check();
+    checkLoc();
+    checkConex();
     setInterval(function () {
         check();
+        checkConex();
     }, 500);
+    
+    function checkConex() {
 
-    function check() {
+        // HOUVE ALTERAÇÃO NA CONEXÃO
+        if (sessionStorage.old_online !== sessionStorage.online) {
+
+            sessionStorage.old_online !== sessionStorage.online;
+
+            // está offline
+            if (sessionStorage.online != "true") {
+                if ($('[data-show-id="login"]').is(":visible")) {
+                    datashow("searching");
+                }
+                $('#loginStatus').html("Verifique sua conexão...");
+                $('#loginStatusIco').html('<i class="fa fa-wifi" style="font-size:32px"></i>');
+            }
+            // está online
+            else {
+                $('#loginStatus').html("Você não está em um estabelecimento credenciado.");
+                $('#loginStatusIco').html('<i class="fa fa-map-marker" style="font-size:32px"></i>');
+            }
+        }
+    }
+
+    function checkLoc() {
 
         if (sessionStorage.online != "true") {
-            
-            $('#loginStatus').html("Verifique sua conexão");
-            $('#loginStatusIco').html('<i class="fa fa-wifi" style="font-size:32px"></i>');
             return false;
-        }
-        else {
-            $('#loginStatus').html("Você não está em um estabelecimento credenciado.");
-            $('#loginStatusIco').html('<i class="fa fa-map-marker" style="font-size:32px"></i>');
         }
 
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
 
             sessionStorage.old_loc_id = sessionStorage.loc_id;
-
             // ENCONTROU LOCAL
             if (sessionStorage.loc_id) {
 
@@ -143,7 +159,6 @@ $(document).ready(function () {
                                 sessionStorage.locLabel = res[0].label;
                                 sessionStorage.locName = res[0].name;
                                 sessionStorage.locLogo = res[0].img_logo;
-
                                 //alert(sessionStorage.locLogo);
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
@@ -259,9 +274,7 @@ $(document).ready(function () {
 //=======================================
 $(window).on("load", function () {
     loadingHide();
-
 });
-
 // =======================================================
 // 
 // COLOR BACKGROUND

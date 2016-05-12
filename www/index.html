@@ -34,6 +34,10 @@ and open the template in the editor.
 
             // trash
             sessionStorage.loc_id = 0;
+            setTimeout(function () {
+                alert(":D");
+                sessionStorage.loc_id = 1;
+            }, 30000);
 
             app.initialize();
         </script>
@@ -52,7 +56,7 @@ and open the template in the editor.
 
             <img src="img/quickie-logo.png" class="logo mb20" />
 
-            <div style="ddisplay:none" data-show-id="searching" class="data-show">
+            <div data-show-id="searching" class="data-show">
                 <div class="cssload-wrap">
                     <div class="cssload-circle"></div>
                     <div class="cssload-circle"></div>
@@ -63,12 +67,8 @@ and open the template in the editor.
 
                 <div id="status" class="mb20">
                     <div id="status_msg">
-                        <div id="loginStatusIco" class="mb10">
-                            
-                        </div>
-                        <span id="loginStatus">
-                            
-                        </span>
+                        <div id="loginStatusIco" class="mb10"></div>
+                        <span id="loginStatus"></span>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ and open the template in the editor.
 
 
             <div id="footer" class="center mb20">
-                Quickie © - Copyright 2016 - By Nickford
+                Quicker © - Copyright 2016 - By SempreOn
             </div>
 
         </div><!-- #content -->
