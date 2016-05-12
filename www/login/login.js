@@ -50,6 +50,7 @@ $(document).ready(function () {
         facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
+                    /*
                     localStorage.fb_id = result.id;
                     localStorage.fb_first_name = result.first_name;
                     localStorage.fb_last_name = result.last_name;
@@ -57,6 +58,7 @@ $(document).ready(function () {
                     localStorage.fb_email = result.email;
                     localStorage.fb_birthday = result.birthday;
                     alert(localStorage.fb_email);
+                    */
                 },
                 function (error) {
                     alert("Failed: " + error);
