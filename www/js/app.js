@@ -24,7 +24,6 @@ function start() {
         localStorage.os = device.platform;
         localStorage.osver = device.version;
     }
-    alert("start");
 }
 
 var app = {
@@ -53,8 +52,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-        var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-        app.ready(fn);
         app.receivedEvent('deviceready');
 
         var test = 'Device Name: ' + device.name + '\r\n' +
@@ -64,10 +61,12 @@ var app = {
                 'Device Version: ' + device.version + '\r\n';
         
         alert(test);
+        
+        var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        app.ready(fn);
     },
     // Update DOM on a Received Event
     ready: function (fn) {
-        alert(fn);
         switch (fn) {
             //===============================
             // INDEX.HTML

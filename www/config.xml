@@ -15,7 +15,7 @@
     
     <content src="index.html"/>
     
-    <access origin="http://www.nickford.com.br" subdomains="true" />
+    <!--<access origin="http://www.nickford.com.br" subdomains="true" />-->
     
     <preference name="permissions" value="none"/>
     <preference name="orientation" value="portrait"/>
