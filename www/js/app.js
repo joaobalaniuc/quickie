@@ -72,7 +72,7 @@ var app = {
                 start();
                 // SPLASHSCREEN (CONFIG.XML BUGFIX)
                 setTimeout(function () {
-                    //navigator.splashscreen.hide();
+                    navigator.splashscreen.hide();
                 }, 1000);
                 break;
         }
