@@ -24,6 +24,7 @@ function start() {
         localStorage.os = device.platform;
         localStorage.osver = device.version;
     }
+    alert("start");
 }
 
 var app = {
@@ -61,9 +62,12 @@ var app = {
                 'Device Platform: ' + device.platform + '\r\n' +
                 'Device UUID: ' + device.uuid + '\r\n' +
                 'Device Version: ' + device.version + '\r\n';
+        
+        alert(test);
     },
     // Update DOM on a Received Event
     ready: function (fn) {
+        alert(fn);
         switch (fn) {
             //===============================
             // INDEX.HTML
