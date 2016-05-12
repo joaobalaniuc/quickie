@@ -92,6 +92,7 @@ $(document).ready(function () {
     function check() {
 
         if (sessionStorage.online != "true") {
+            
             $('#loginStatus').html("Verifique sua conexão");
             $('#loginStatusIco').html('<i class="fa fa-wifi" style="font-size:32px"></i>');
             return false;
