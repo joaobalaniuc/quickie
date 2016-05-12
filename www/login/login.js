@@ -3,14 +3,14 @@ $(document).ready(function () {
     sessionStorage.removeItem("old_data_show");
     sessionStorage.removeItem("old_loc_id");
     /*
-    facebookConnectPlugin.logout(
-            function () {
-                alert("logout ok");
-            },
-            function () {
-                alert("logout error");
-            });
-    */
+     facebookConnectPlugin.logout(
+     function () {
+     alert("logout ok");
+     },
+     function () {
+     alert("logout error");
+     });
+     */
     bkgColors;
 
     //=====================================
@@ -51,14 +51,14 @@ $(document).ready(function () {
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
                     /*
-                    localStorage.fb_id = result.id;
-                    localStorage.fb_first_name = result.first_name;
-                    localStorage.fb_last_name = result.last_name;
-                    localStorage.fb_gender = result.gender;
-                    localStorage.fb_email = result.email;
-                    localStorage.fb_birthday = result.birthday;
-                    alert(localStorage.fb_email);
-                    */
+                     localStorage.fb_id = result.id;
+                     localStorage.fb_first_name = result.first_name;
+                     localStorage.fb_last_name = result.last_name;
+                     localStorage.fb_gender = result.gender;
+                     localStorage.fb_email = result.email;
+                     localStorage.fb_birthday = result.birthday;
+                     alert(localStorage.fb_email);
+                     */
                 },
                 function (error) {
                     alert("Failed: " + error);
@@ -90,6 +90,16 @@ $(document).ready(function () {
     }, 500);
 
     function check() {
+
+        if (sessionStorage.online != "true") {
+            $('#loginStatus').html("Verifique sua conexão");
+            $('#loginStatusIco').html('<i class="fa fa-wifi" style="font-size:32px"></i>');
+            return false;
+        }
+        else {
+            $('#loginStatus').html("Você não está em um estabelecimento credenciado.");
+            $('#loginStatusIco').html('<i class="fa fa-map-marker" style="font-size:32px"></i>');
+        }
 
         // HOUVE ALTERAÇÃO NO LOCAL
         if (sessionStorage.old_loc_id !== sessionStorage.loc_id) {
@@ -137,20 +147,20 @@ $(document).ready(function () {
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
                                 /*
-                                facebookConnectPlugin.getLoginStatus(function (response) {
-                                    //alert(2);
-                                    if (response.status === 'connected') {
-                                        var uid = response.authResponse.userID;
-                                        var accessToken = response.authResponse.accessToken;
-                                        //window.location.href = "quickie.html";
-                                        alert("AUTH OK");
-                                    } else if (response.status === 'not_authorized') {
-                                        alert("NOT AUTH");
-                                    } else {
-                                        alert("NOG LOGGED");
-                                    }
-                                });
-                                */
+                                 facebookConnectPlugin.getLoginStatus(function (response) {
+                                 //alert(2);
+                                 if (response.status === 'connected') {
+                                 var uid = response.authResponse.userID;
+                                 var accessToken = response.authResponse.accessToken;
+                                 //window.location.href = "quickie.html";
+                                 alert("AUTH OK");
+                                 } else if (response.status === 'not_authorized') {
+                                 alert("NOT AUTH");
+                                 } else {
+                                 alert("NOG LOGGED");
+                                 }
+                                 });
+                                 */
 
                             } // res not null
                         }); // after ajax

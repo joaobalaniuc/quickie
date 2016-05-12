@@ -15,41 +15,6 @@ function start() {
     sessionStorage.lastchat = 0; // last msg id (#index-3)
     sessionStorage.lastchat_inner = 0; // (#messages)
     //
-    if (typeof device === "undefined") {
-        //alert(1);
-        localStorage.os = "iOS";
-        localStorage.osver = "9.0";
-    }
-    else {
-        localStorage.os = device.platform;
-        localStorage.osver = device.version;
-    }
-
-    $.ajax({
-        url: localStorage.server + "/getlocal.json.php",
-        data: {
-            'loc_id': 1
-        },
-        type: 'GET',
-        dataType: 'jsonp',
-        jsonp: 'callback',
-        timeout: 5000
-    })
-            .fail(function () {
-                alert("failx");
-            })
-            .done(function (res) {
-                if (res !== null) {
-                    if (typeof res.length !== "undefined") {
-                        alert(res.length + " results");
-                    }
-                    sessionStorage.loc_id = res[0].id;
-                    sessionStorage.locLabel = res[0].label;
-                    sessionStorage.locName = res[0].name;
-                    sessionStorage.locLogo = res[0].img_logo;
-                    alert(sessionStorage.locLogo);
-                } // res not null
-            }); // after ajax
 }
 
 var app = {
@@ -80,11 +45,12 @@ var app = {
 
         app.receivedEvent('deviceready');
 
-        var test = 'Device Name: ' + device.name + '\r\n' +
-                'Device PhoneGap: ' + device.phonegap + '\r\n' +
-                'Device Platform: ' + device.platform + '\r\n' +
-                'Device UUID: ' + device.uuid + '\r\n' +
-                'Device Version: ' + device.version + '\r\n';
+        // SPLASHSCREEN (CONFIG.XML BUGFIX)
+        setTimeout(function () {
+            navigator.splashscreen.hide();
+        }, 1000);
+
+        start();
 
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         app.ready(fn);
@@ -96,11 +62,7 @@ var app = {
             // INDEX.HTML
             //===============================
             case "index.html":
-                start();
-                // SPLASHSCREEN (CONFIG.XML BUGFIX)
-                setTimeout(function () {
-                    navigator.splashscreen.hide();
-                }, 1000);
+                //
                 break;
         }
     },
