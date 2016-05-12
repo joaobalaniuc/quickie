@@ -46,8 +46,8 @@ $(document).ready(function () {
     });
 
     $('#facebook').click(function () {
-        alert(1);
-        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday,about,bio", ["user_birthday"],
+        //alert(1);
+        facebookConnectPlugin.api("/me/?fields=id,email,first_name,last_name,gender,picture,birthday", ["user_birthday"],
                 function (result) {
                     alert("Result: " + JSON.stringify(result));
                     /*
