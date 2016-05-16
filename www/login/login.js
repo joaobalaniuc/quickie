@@ -76,7 +76,7 @@ $(document).ready(function () {
         if (sessionStorage.old_online !== sessionStorage.online) {
 
             sessionStorage.old_online !== sessionStorage.online;
-            sessionStorage.old_loc_id = 0;
+            //sessionStorage.old_loc_id = 0;
             // está offline
             if (sessionStorage.online != "true") {
                 if ($('[data-show-id="login"]').is(":visible")) {
@@ -92,7 +92,6 @@ $(document).ready(function () {
             }
         }
     }
-
     function checkLoc() {
 
         if (sessionStorage.online != "true") {
@@ -106,10 +105,7 @@ $(document).ready(function () {
 
             // ENCONTROU LOCAL
             if (sessionStorage.loc_id > 0) {
-
-                var test = fb.getLoginStatus();
-                alert(test);
-
+                
                 //myApp.showIndicator();
 
                 $.ajax({
@@ -143,7 +139,11 @@ $(document).ready(function () {
                                 sessionStorage.locLabel = res[0].label;
                                 sessionStorage.locName = res[0].name;
                                 sessionStorage.locLogo = res[0].img_logo;
-                                //alert(sessionStorage.locLogo);
+
+                                if (localStorage.fb_status === 'connected') {
+                                    $('#entrar').show();
+                                    $('#entrando').hide();
+                                }
                                 $('#locLogo').attr("src", sessionStorage.locLogo);
                                 datashow("login");
 

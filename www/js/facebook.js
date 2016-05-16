@@ -5,9 +5,10 @@
 var fb = {
     login: function () {
         facebookConnectPlugin.login(["email", "public_profile"], function (result) {
-            kons("fb.login() = " + JSON.stringify(result));
+            alert("fb.login() = " + JSON.stringify(result));
             localStorage.fb_id = result.authResponse.userID;
             localStorage.fb_token = result.authResponse.accessToken;
+            localStorage.fb_status = 'connected';
         }, function (err) {
             alert('an error occured while trying to login. please try again. Err:' + err);
         });
@@ -22,25 +23,30 @@ var fb = {
                     localStorage.fb_gender = result.gender;
                     localStorage.fb_email = result.email;
                     localStorage.fb_birthday = result.birthday;
-                    alert(localStorage.fb_email);
+                    //alert(localStorage.fb_email);
                 },
                 function (error) {
                     alert("Failed: " + error);
                 });
     },
     getLoginStatus: function () {
+        
         facebookConnectPlugin.getLoginStatus(function (response) {
-            kons("fb.getLoginStatus() = " + response);
+            
+            alert("fb.getLoginStatus() = " + response);
+            localStorage.fb_status = response.status;
+            
             if (response.status === 'connected') {
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                //window.location.href = "quickie.html";
+                localStorage.fb_id = result.authResponse.userID;
+                localStorage.fb_token = result.authResponse.accessToken;
                 //alert("AUTH OK");
-                return "OK MESMO";
+                //return "OK MESMO";
             } else if (response.status === 'not_authorized') {
-                alert("NOT AUTH");
+                //alert("NOT AUTH");
             } else {
-                alert("NOG LOGGED");
+                //alert("NOG LOGGED");
             }
         });
     },

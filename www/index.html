@@ -29,19 +29,19 @@ and open the template in the editor.
         <!-- Loader -->
         <link href="css/jw-loading.css" rel="stylesheet" />
         <script src="js/jw-loading.js" type="text/javascript"></script>
-        <!-- Console -->
-        <link href="kons/kons.css" rel="stylesheet" />
-        <script src="kons/kons.js"></script>
         <script>
             // alias session        
             s = sessionStorage;
 
             // trash
             sessionStorage.loc_id = 0;
+            sessionStorage.online = false;
+
             setTimeout(function () {
+                sessionStorage.online = true;
                 sessionStorage.loc_id = 1;
             }, 3000);
-
+            
             app.initialize();
 
         </script>
@@ -57,14 +57,11 @@ and open the template in the editor.
         </div>
         -->
 
-        <div id="console">
-        </div>
-
         <div id="content">
 
             <img src="img/quickie-logo.png" class="logo mb20" />
 
-            <div data-show-id="searching" class="data-show">
+            <div style="display:none" data-show-id="searching" class="data-show">
                 <div class="cssload-wrap">
                     <div class="cssload-circle"></div>
                     <div class="cssload-circle"></div>
@@ -81,17 +78,29 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <div style="display:none;" data-show-id="login" class="data-show">
+            <div style="ddisplay:none;" data-show-id="login" class="data-show">
                 <div class="mb20">
                     <img id="locLogo" src="" width="190" height="202" border="0" />
                 </div>
 
-                <div id="facebook" ddata-show="register" class="but light round mb10">
-                    <i class="fa fa-facebook"></i> Entrar com Facebook
-                </div>
+                <div id="social" class="mb30">
 
-                <div id="twitter" ddata-show="register" class="but light round mb30">
-                    <i class="fa fa-twitter"></i> Entrar com Twitter
+                    <div id="entrando" style="display:none">
+                        <img src="img/loading2.gif" class="mb10" style="width:48px"></i><br/>
+                        Entrando...
+                    </div>
+
+                    <div id="entrar">
+
+                        <div id="facebook" class="but light round mb10">
+                            <i class="fa fa-facebook"></i> Entrar com Facebook
+                        </div>
+
+                        <div id="twitter" class="but light round">
+                            <i class="fa fa-twitter"></i> Entrar com Twitter
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

@@ -44,13 +44,15 @@ var app = {
     onDeviceReady: function () {
 
         app.receivedEvent('deviceready');
-
+        
         // SPLASHSCREEN (CONFIG.XML BUGFIX)
         setTimeout(function () {
             navigator.splashscreen.hide();
         }, 1000);
 
         start();
+        
+        fb.getLoginStatus();
 
         var fn = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         app.ready(fn);
