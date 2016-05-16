@@ -1,5 +1,7 @@
 # Jw
 *.psd
+*.zip
+*.rar
 backup/
 server/
 nbproject/
